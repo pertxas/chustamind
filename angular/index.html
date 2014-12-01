@@ -1,0 +1,110 @@
+ <html ng-app="angularChustaMind">
+<head>
+<title>ChustaMind</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+<style>
+body {
+    margin:0px;
+    background-color: #c0c0c0;
+}
+#container{/*
+    background-color: #ffc0c0;
+*/}
+#tablero {
+    width: 85%;
+}
+
+#botonera {
+    position: fixed;
+    top: 0px;
+    height: 100%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+td {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0px;
+}
+.startbtn {
+    width: 10%;
+}
+.samplepeg {
+    width: 5%;
+}
+</style>
+</head>
+
+<body>
+<div ng-controller="settingsCtrl">
+<audio controls><source src="/static/jingle.mp3" type="audio/mpeg"></audio>
+<div id="settings" ng-show="showSettings">
+<h2>Welcome to ChustaMind</h2>
+Guess the hidden code<br/>
+<img class="samplepeg" src="/static/peg1.svg" /> Right colour, right place<br/>
+<img class="samplepeg" src="/static/peg2.svg" /> Right colour, wrong place<br/>
+Colours:<select ng-model="cantidadColores" ng-options="value for value in cantidadesColores"></select><br/>
+Turns:<select ng-model="cantidadTurnos" ng-options="value for value in cantidadesTurnos"></select><br/>
+Code length:<select ng-model="longitudClave" ng-options="value for value in longitudesClave"></select><br/>
+<img class="startbtn" ng-click="start()" src="/static/start.svg"/>
+</div>
+
+<div id="container">
+<div id="tablero">
+<table>
+<tr ng-if="end"><td><img ng-repeat="color in clave track by $index" class="hueco" src="/static/btn{{color}}.svg"/></td></tr>
+<tr ng-repeat="fila in tablero track by $index">
+    <td>
+    <img ng-repeat="hueco in fila.huecos track by $index" class="hueco" src="/static/btn{{hueco}}.svg" />
+    <img ng-repeat="peg in fila.pegs track by $index" class="peg" src="/static/peg{{peg}}.svg" />
+    </td>
+</tr>
+<tr ng-if="end"><td><img ng-repeat="color in clave track by $index" class="hueco" src="/static/btn{{color}}.svg"/></td></tr>
+</table>
+</div>
+</div>
+<div id="botonera" ng-show="showSettings == false">
+    <img class="btn" ng-repeat="color in listaColores track by $index" src="/static/btn{{color}}.svg" ng-click="press(color)" ng-if="end == false"/>
+    <span class="resultado" ng-if="end" ng-bind="resultado"></span>
+    <img class="btn" ng-click="undo()" src="/static/undo.svg" /><br/>
+    <img class="btn" ng-click="restart()" src="/static/restart.svg" />
+</div>
+
+<style>
+.resultado {
+    font-size: 4vw;
+    word-wrap: break-word;
+}
+.hueco{
+    width:{{(60/longitudClave)}}%
+}
+.peg{
+    width:{{(30/longitudClave)}}%
+}
+.btn{
+    width:100%;
+}
+</style>
+</div>
+
+<script src="angularChustaMind.js"></script>
+<script src="settingsCtrl.js"></script>
+<script>
+    var ancho = window.innerWidth;
+    var alto = window.innerHeight;
+    if (ancho >= alto)
+        {
+        ancho = alto/2;
+        }
+    document.getElementById('container').style.width=ancho;
+    document.getElementById('settings').style.width=ancho;
+    document.getElementById('botonera').style.width=(ancho*15)/100;
+    document.getElementById('botonera').style.left=ancho-((ancho*15)/100);
+    document.getElementById('botonera').style.top=document.getElementById('settings').offsetTop;
+</script>
+</body>
+</html>
