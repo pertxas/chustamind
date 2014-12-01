@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>ChustaMind</title>
+<style>
+div {
+    width: 33%;
+    height: 100%;
+    background-color: #cccccc;
+    text-align:center;
+    margin: 0 auto;
+}
+div span {
+ position: relative;
+ top: 10%;
+}
+.btn {
+    height: 60px;
+    width: 60px;
+}
+.peg {
+    height: 30px;
+    width: 30px;
+}
+</style>
+</head>
+<body>
+   <div><span>
+       {{output |safe}}
+    <br/>
+    <br/>
+    <a href="{{url_for('init')}}">RESTART</a>
+   </span></div>
+</body>
+
+</html>
