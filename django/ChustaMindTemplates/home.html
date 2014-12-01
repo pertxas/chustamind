@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<title>ChustaMind</title>
+</head>
+<style>
+div {
+    width: 400px;
+    height: 250px;
+    background-color: #cccccc;
+    position: absolute;
+    font-size: 2em;
+    text-align:center;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+div span {
+ position: relative;
+ top: 22%;
+}
+select {
+    font-size: 1em;
+}
+</style>
+<body>
+<div ><span>
+<form action="newgame" method=post>
+  {% csrf_token %}
+  Cantidad de colores: <select name=cantidadColores>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5 selected=selected>5</option>
+                        <option value=6>6</option>
+                        <option value=7>7</option>
+                    </select><br/>
+  Cantidad de turnos: <select name=cantidadTurnos>
+                        <option value=5>5</option>
+                        <option value=8>8</option>
+                        <option value=10>10</option>
+                        <option value=12 selected=selected>12</option>
+                        <option value=15>15</option>
+                        <option value=18>18</option>
+                        <option value=20>20</option>
+                        <option value=25>25</option>
+                    </select><br/>
+  Longitud de clave: <select name=longitudClave>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5 selected=selected>5</option>
+                        <option value=6>6</option>
+                        <option value=7>7</option>
+                    </select><br/>
+  <input type=submit value=Start style=font-size:1em;>
+
+</form>
+</span></div>
+</body>
+</html>
