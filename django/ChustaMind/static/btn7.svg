@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Karbon, part of Calligra: http://www.calligra.org/karbon -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2.83465pt" height="2.83465pt">
+<defs>
+  <radialGradient id="gradient0" gradientTransform="" gradientUnits="objectBoundingBox" cx="0.50000000000" cy="0.50000000000" fx="0.25000000000" fy="0.25000000000" r="0.50000000000" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#ff00ff" offset="1.00000000000" stop-opacity="1.00000000000"/>
+  </radialGradient>
+ </defs>
+<g id="layer0">
+  <ellipse id="shape0" transform="translate(0.0529066, 0.0529066)" rx="1.37500000000pt" ry="1.37500000000pt" cx="1.37500000000pt" cy="1.37500000000pt" fill="url(#gradient0)" fill-rule="evenodd" stroke="#000000" stroke-width="0.03543313225" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="1.98425540600"/>
+ </g>
+</svg>
