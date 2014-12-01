@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <style>
+body {
+    margin:0px;
+    background-color: #c0c0c0;
+}
+
+#tablero {
+    width: 85%;
+}
+
+#botonera {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 15%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+td {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0px;
+}
+
+.hueco {
+    width: {{ request.session.huecowidth }}%;
+}
+
+.peg {
+    width: {{ request.session.pegwidth }}%;
+}
+
+.btn {
+    width: 100%;
+}
+
+.samplepeg {
+    height: 3%;
+}
+        </style>
+    </head>
+    <body>
+    <div id="tablero">
+    {% if request.session.end %}
+    <span>{{ request.session.resultado }}</span>
+    {% endif %}
+    {% if not request.session.end %}
+    <span style="width:100%">Guess the hidden code / <img class="samplepeg" src="/static/peg1.svg" /> Right colour, right place / <img class="samplepeg" src="/static/peg2.svg" /> Right colour, wrong place</span>
+    {% endif %}
+    <table>
+    {% for linea in request.session.tablero %}
+    <tr><td>
+        {% for n in linea.huecos %}
+            <img class="hueco" src="/static/btn{{ n }}.svg" />
+        {% endfor %}
+        {% for n in linea.pegs %}
+            <img class="peg" src="/static/peg{{ n }}.svg" />
+        {% endfor %}
+    </td></tr>
+    {% endfor %}
+    {% if request.session.end %}
+    <tr><td>
+    {% for n in request.session.clave %}
+        <img class="hueco" src="/static/btn{{ n }}.svg" />
+    {% endfor %}
+    </td></tr>
+    {% endif %}
+    </table>
+    </div>
+    <div id="botonera">
+        {% if not request.session.end %}
+        {% for n in request.session.listaColores %}
+        <a class="btn" href="/usrinput/{{ n }}" ><img class="btn" src="/static/btn{{ n }}.svg" /></a>
+        {% endfor %}
+        <a class="btn" href="/undo" ><img class="btn" src="/static/undo.svg" /></a>
+        {% endif %}
+        <a class="btn" href="/" ><img class="btn" src="/static/restart.svg" /></a>
+    </div>
+    <audio controls>
+    <source src="/static/jingle.mp3" type="audio/mpeg">
+    </audio>
+    </body>
+</html>
